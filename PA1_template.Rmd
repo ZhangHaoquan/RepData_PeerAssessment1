@@ -25,7 +25,7 @@ act      <- act[complete.cases(act),]
 * Make a histogram of the total number of steps taken each day
 * Calculate and report the mean and median total number of steps taken per day
 
-```{r  fig.height=5}
+```{r}
 Total_Steps        <- sapply(split(act$steps,act$date),sum)
 Total_Steps_mean   <- mean(Total_Steps)
 Total_Steps_median <- median(Total_Steps)
@@ -77,7 +77,7 @@ act_raw[!complete.cases(act_raw),]$steps = 0
 
 **Yes the estimates do differ. In particular, both the median and mean are pulled down due to the injection of more data points with value 0 **
 
-```{r fig.height=10}
+```{r}
 par(mfrow = c(2,1))
 Total_Steps        <- sapply(split(act$steps,act$date),sum)
 Total_Steps_mean   <- mean(Total_Steps)
@@ -103,7 +103,7 @@ par(mfrow = c(1,1))
 ### Are there differences in activity patterns between weekdays and weekends?
 * Create a new factor variable in the dataset with two levels -- "weekday" and "weekend" indicating whether a given date is a weekday or weekend day. 
 
-```{r  fig.height=10}
+```{r}
 act_raw$weekendDes <- weekdays(act_raw$date)
 act_raw$weekendInd <- ifelse((weekdays(act_raw$date) == "Sunday" | weekdays(act_raw$date) == "Saturday"), "Weekend","Weekday")
 act_ByWeekend      <- lapply(split(act_raw, act_raw$weekendInd),
